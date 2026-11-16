@@ -1,25 +1,25 @@
-import 'novel.dart';
+import 'interactiveStory.dart';
 
-/// The local collection of novels (aggregation: novels exist independently).
+/// The local collection of interactive stories (aggregation: stories exist independently).
 class Library {
-  final List<Novel> _novels = [];
+  final List<InteractiveStory> _stories = [];
 
-  Library([Iterable<Novel> novels = const []]) {
-    novels.forEach(add);
+  Library([Iterable<InteractiveStory> stories = const []]) {
+    stories.forEach(add);
   }
 
-  List<Novel> get novels => List.unmodifiable(_novels);
+  List<InteractiveStory> get stories => List.unmodifiable(_stories);
 
-  void add(Novel novel) {
-    if (_novels.any((n) => n.id == novel.id)) {
-      throw ArgumentError('Duplicate novel id: ${novel.id}');
+  void add(InteractiveStory story) {
+    if (_stories.any((s) => s.id == story.id)) {
+      throw ArgumentError('Duplicate story id: ${story.id}');
     }
-    _novels.add(novel);
+    _stories.add(story);
   }
 
-  Novel? findById(String id) {
-    for (final n in _novels) {
-      if (n.id == id) return n;
+  InteractiveStory? findById(String id) {
+    for (final s in _stories) {
+      if (s.id == id) return s;
     }
     return null;
   }
