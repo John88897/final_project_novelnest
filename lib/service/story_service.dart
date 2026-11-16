@@ -1,4 +1,6 @@
-import '../model/story.dart';
+import '../model/interactiveStory.dart';
+import '../model/storySection.dart';
+import '../model/storySession.dart';
 import 'exceptions.dart';
 
 /// US-4: play an interactive story and reach different endings.

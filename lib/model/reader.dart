@@ -1,18 +1,23 @@
-import 'bookmark.dart';
-import 'reading_position.dart';
+import 'storySession.dart';
 
-/// The user of the app. Owns (composition) their personal reading data:
-/// favorites, bookmarks, and the latest progress per novel.
+/// The user of the app. Owns (composition) their personal interactive story data:
+/// favorites and active story playthrough sessions.
 class Reader {
   final String name;
-  final Set<String> favoriteNovelIds = {};
-  final List<Bookmark> bookmarks = [];
-  final Map<String, ReadingPosition> progress = {};
+  final Set<String> favoriteStoryIds = {};
+  final Map<String, StorySession> sessions = {};
 
   Reader(this.name);
 
-  bool isFavorite(String novelId) => favoriteNovelIds.contains(novelId);
+  bool isFavorite(String storyId) => favoriteStoryIds.contains(storyId);
 
-  List<Bookmark> bookmarksFor(String novelId) =>
-      bookmarks.where((b) => b.position.novelId == novelId).toList();
+  StorySession? sessionFor(String storyId) => sessions[storyId];
+
+  void saveSession(StorySession session) {
+    sessions[session.story.id] = session;
+  }
+
+  void removeSession(String storyId) {
+    sessions.remove(storyId);
+  }
 }
