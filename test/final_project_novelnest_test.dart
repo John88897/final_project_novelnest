@@ -123,23 +123,29 @@ void main() {
 
       final resumed = readerService.resumeStory(reader, 's1');
       expect(resumed.currentSectionId, 'bad');
-      expect(resumed.path, ['start', 'bad']));
+      expect(resumed.path, ['start', 'bad']);
     });
 
-    test('resume with no saved progress starts at the beginning', (){
+    test('resume with no saved progress starts at the beginning', () {
       final session = readerService.resumeStory(reader, 's1');
       expect(session.currentSectionId, 'start');
-      expect(reader.sessionFor('s1'),  same(session));
+      expect(reader.sessionFor('s1'), same(session));
     });
 
-    test('saveProgress rejects a session for a story not in the library', (){
-      final outsider = StorySession(InteractiveStory(
-        id: 'other',
-        title: 'Other',
-        startSectionId: 'a', 
-        sections: [StorySection(id: 'a', text: 'x')],));
-        expect(()=> readerService.saveProgress(reader, outsider), throwsA(isA<ServiceException>()));
-        expect(reader.sessions, isEmpty);
+    test('saveProgress rejects a session for a story not in the library', () {
+      final outsider = StorySession(
+        InteractiveStory(
+          id: 'other',
+          title: 'Other',
+          startSectionId: 'a',
+          sections: [StorySection(id: 'a', text: 'x')],
+        ),
+      );
+      expect(
+        () => readerService.saveProgress(reader, outsider),
+        throwsA(isA<ServiceException>()),
+      );
+      expect(reader.sessions, isEmpty);
     });
 
     test('adds a favorite and lists it', () {
@@ -150,8 +156,10 @@ void main() {
 
     test('rejects a duplicate favorite', () {
       readerService.addFavorite(reader, 's1');
-      expect(() => readerService.addFavorite(reader, 's1'),
-          throwsA(isA<ServiceException>()));
+      expect(
+        () => readerService.addFavorite(reader, 's1'),
+        throwsA(isA<ServiceException>()),
+      );
     });
-  
+  });
 }
