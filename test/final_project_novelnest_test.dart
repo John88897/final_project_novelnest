@@ -1,14 +1,18 @@
 
+import 'package:test/test.dart';
 
-import '../lib/model/chapter.dart';
-import '../lib/model/library.dart';
-import '../lib/model/novel.dart';
-import '../lib/model/reader.dart';
-import '../lib/model/story.dart';
-import '../lib/service/bookmark_service.dart';
-import '../lib/service/library_service.dart';
-import '../lib/service/reading_service.dart';
-import '../lib/service/story_service.dart';
+import 'package:final_project_novelnest/model/chapter.dart';
+import 'package:final_project_novelnest/model/library.dart';
+import 'package:final_project_novelnest/model/novel.dart';
+import 'package:final_project_novelnest/model/reader.dart';
+import 'package:final_project_novelnest/model/reading_position.dart';
+import 'package:final_project_novelnest/model/story.dart';
+import 'package:final_project_novelnest/service/bookmark_service.dart';
+import 'package:final_project_novelnest/service/exceptions.dart';
+import 'package:final_project_novelnest/service/library_service.dart';
+import 'package:final_project_novelnest/service/reading_service.dart';
+import 'package:final_project_novelnest/service/story_service.dart';
+
 
 void main() {
   late Library library;
